@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      {% load staticfiles %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style/css/bootstrap.css' %}" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+    <body class="container">
+        <div class="row">
+            <h2>Are you sure you want to delete this course?</h2>
+            <h3><strong>Course Name: </strong>{{course.name}}</h3>
+            <h4><strong>Course Name: </strong>{{course.descriptions.content}}</h4>
+
+            <form action="/destroy/{{course.id}}" method="post">
+                {% csrf_token %}
+
+                <input type="hidden" name="method" value="delete">
+                <a href="/" type="button" class="btn btn-success">NO</a>
+                <button type="submit" class="btn btn-danger">YES</button>
+            </form>
+        </div>
+
+    </body>
+</html>

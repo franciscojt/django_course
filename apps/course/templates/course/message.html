@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      {% load staticfiles %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style/css/bootstrap.css' %}" media="screen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+    <body class="container">
+        <div class="row">
+            <h2>Comments about a course.</h2>
+            <h3><strong>Course Name: </strong>{{course.name}}</h3>
+            <h4><strong>Course Name: </strong>{{course.descriptions.content}}</h4>
+            
+
+            <form action="/comments/create/{{course.id}}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                <label for="comment">Course Comment:</label>
+                <textarea name="content" id="comment" cols="30" rows="3" class="form-control" placeholder="Please insert your comment for this course"></textarea>
+                </div>
+                <a href="/" type="button" class="btn btn-success">Back</a>
+                <button type="submit" class="btn btn-danger">Add Comment</button>
+            </form>
+        </div>
+        <div class="row">
+            <h5>Posted comments:</h5>
+            {% for comment in comments %}
+                <p>{{comment.content}} --- {{comment.created_at}}</p>
+             {% endfor %}
+        </div>
+
+    </body>
+</html>
