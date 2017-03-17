@@ -34,6 +34,7 @@
                         <th>ID</th>
                         <th>Course</th>
                         <th>Description</th>
+                        <th>Dated Added</th>
                         <th>Options</th>
                     </tr>
                 </thead>
@@ -44,6 +45,7 @@
                             <td>{{course.id}}</td>
                             <td>{{course.name}}</td>
                             <td>{{course.descriptions.content}}</td>
+                            <td>{{course.created_at}}</td>
                             <td><a href="/show/{{course.id}}" type="button" class="btn btn-danger">Delete</a> <a href="/comments/{{course.id}}" type="button" class="btn btn-info">Add Comment</a></td>
                         </tr>
                         {% endfor %}
